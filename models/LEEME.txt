@@ -1,0 +1,2 @@
+Pon aquí tus archivos .fbx (y sus portadas .jpg/.png si quieres).
+Luego regístralos en js/models-data.js

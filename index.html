@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jonathan Veloz: desarrollo de sitios web en WordPress (maquetación, responsive, SEO técnico, Schema) y modelado 3D con visor interactivo." />
+  <meta name="theme-color" content="#E7E9EB" />
+  <title>Jonathan Veloz | Desarrollo web y modelado 3D</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230E1A2B'/%3E%3Cpath d='M9 8v10a4 4 0 0 0 8 0V8M20 8l4 16 4-16' fill='none' stroke='%23FF7A1A' stroke-width='3' transform='translate(-3 0) scale(.9)'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<a class="skip" href="#proyectos">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">Jonathan Veloz</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span>
+    </button>
+
+    <nav id="mainNav" aria-label="Principal">
+      <a href="#proyectos">Proyectos web</a>
+      <a href="#modelos-3d">Modelos 3D</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#perfil">Perfil</a>
+      <a class="nav-cta" id="headerContact" href="#contacto" hidden>Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <canvas id="heroCanvas" role="img" aria-label="Modelo 3D interactivo: arrastra para girarlo"></canvas>
+
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <h1>
+          <span class="line"><span>Desarrollo webs</span></span>
+          <span class="line"><span>y modelo en 3D.</span></span>
+        </h1>
+
+        <p class="hero-lead rise">
+          Soy Jonathan Veloz. Construyo sitios en WordPress con maquetación a medida,
+          responsive, SEO técnico y Schema. También modelo objetos en 3D y los publico
+          aquí para que puedas verlos y girarlos en el navegador.
+        </p>
+
+        <div class="hero-actions rise">
+          <a class="btn btn-solid" href="#proyectos">Ver proyectos web</a>
+          <a class="btn btn-line" href="#modelos-3d">Ver modelos 3D</a>
+        </div>
+
+        <p class="hero-stack rise">
+          Trabajo con WordPress, Elementor Pro, HTML, CSS y JavaScript.
+        </p>
+      </div>
+
+      <div class="hero-tools rise">
+        <span>Arrastra el modelo para girarlo</span>
+        <div class="vp-switch" role="group" aria-label="Modo de visualización">
+          <button type="button" data-mode="solid" aria-pressed="true" class="on">Sólido</button>
+          <button type="button" data-mode="wire" aria-pressed="false">Malla</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS WEB -->
+  <section class="section" id="proyectos">
+    <div class="wrap">
+      <header class="section-head">
+        <h2>Proyectos web</h2>
+        <p>
+          Sitios publicados en los que participé. En cada uno indico qué parte del trabajo
+          me tocó, desde la maquetación hasta la publicación.
+        </p>
+      </header>
+
+      <div class="work-tools">
+        <div class="tabs" id="filterButtons" role="tablist" aria-label="Filtrar por sector"></div>
+        <span class="count" id="resultsCount" aria-live="polite"></span>
+      </div>
+
+      <div class="featured-grid" id="featuredGrid"></div>
+
+      <div class="list-head" id="listHead" aria-hidden="true">
+        <span>Proyecto</span>
+        <span></span>
+        <span>Mi participación</span>
+        <span>Tecnologías</span>
+        <span></span>
+      </div>
+      <div class="project-list" id="projectsList"></div>
+      <div class="showcase-list" id="showcaseList" hidden></div>
+
+      <div class="empty-state" id="emptyState" hidden>
+        <strong>No hay proyectos en este sector</strong>
+        <p>Elige otro filtro para ver más trabajos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELOS 3D -->
+  <section class="section models" id="modelos-3d">
+    <div class="wrap">
+      <header class="section-head">
+        <h2>Modelos 3D</h2>
+        <p>
+          Objetos y personajes que he modelado. Abre cualquiera para girarlo,
+          acercarte y ver su malla.
+        </p>
+      </header>
+
+      <div class="work-tools">
+        <div class="tabs" id="modelFilters" hidden></div>
+        <div class="models-actions">
+          <span class="count" id="modelsCount"></span>
+          <label class="local-fbx" hidden title="Previsualiza un FBX de tu computadora sin subirlo">
+            <input type="file" id="localFbx" accept=".fbx" hidden />
+            Probar un FBX local
+          </label>
+        </div>
+      </div>
+
+      <div class="models-grid" id="modelsGrid"></div>
+
+      <div class="models-empty" id="modelsEmpty" hidden>
+        <strong>Colección en preparación</strong>
+        <p>Estoy organizando mis modelos. Pronto podrás girar cada uno desde aquí.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section" id="servicios">
+    <div class="wrap services-grid">
+      <header class="services-intro">
+        <h2>Qué puedo hacer en tu proyecto</h2>
+        <p>
+          Además de maquetar, publico, optimizo y corrijo. Cada trabajo se adapta a lo
+          que el cliente necesita de verdad.
+        </p>
+      </header>
+
+      <div class="services">
+        <article class="service">
+          <h3>Sitios web</h3>
+          <p>
+            Diseño y maquetación según la identidad y los objetivos de cada empresa:
+            landing pages, webs informativas, catálogos web y e-commerce.
+          </p>
+        </article>
+        <article class="service">
+          <h3>Responsive</h3>
+          <p>Adaptación a computador, tablet y celular, cuidando jerarquía, legibilidad y espaciado.</p>
+        </article>
+        <article class="service">
+          <h3>SEO técnico y Schema</h3>
+          <p>Estructura, metadatos, encabezados, datos estructurados e indexación.</p>
+        </article>
+        <article class="service">
+          <h3>Optimización</h3>
+          <p>Rendimiento, estabilidad, caché, recursos, plugins y mantenimiento general.</p>
+        </article>
+        <article class="service">
+          <h3>Código personalizado</h3>
+          <p>HTML, CSS y JavaScript para componentes e interacciones que los widgets no resuelven.</p>
+        </article>
+        <article class="service">
+          <h3>Publicación y soporte</h3>
+          <p>Migración, hosting, DNS, publicación y soporte técnico de sitios en producción.</p>
+        </article>
+        <article class="service">
+          <h3>Modelado 3D</h3>
+          <p>
+            Modelos 3D exportados en FBX para visualizarlos en la web, presentaciones y proyectos creativos.
+            <a class="inline-link" href="#modelos-3d">Ver los modelos</a>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFIL -->
+  <section class="section about" id="perfil">
+    <div class="wrap about-grid">
+      <h2>Diseño visual con criterio técnico.</h2>
+
+      <div class="about-copy">
+        <p>
+          Mi trabajo combina diseño web, implementación y soporte técnico. Además de
+          construir interfaces, reviso responsive, SEO, Schema, optimización, publicación
+          y los problemas que aparecen después de la entrega.
+        </p>
+        <p>
+          Cuando Elementor o un widget no permite resolver algo correctamente, uso HTML,
+          CSS y JavaScript para lograr el resultado esperado. Y cuando el proyecto pide
+          algo más visual, lo llevo a 3D.
+        </p>
+
+        <dl class="facts">
+          <div><dt>Web</dt><dd>WordPress, Elementor Pro, HTML, CSS y JavaScript</dd></div>
+          <div><dt>Técnico</dt><dd>SEO on-page, Schema, rendimiento y publicación</dd></div>
+          <div><dt>3D</dt><dd>Modelado y exportación en FBX</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO (se oculta si js/site-config.js está vacío) -->
+  <section class="section contact" id="contacto" hidden>
+    <div class="wrap">
+      <h2>¿Tienes un proyecto en mente?</h2>
+      <p class="contact-lead">Cuéntame qué necesitas y vemos cómo resolverlo.</p>
+      <a class="contact-main" id="contactMain" href="#"></a>
+      <div class="contact-links" id="contactLinks"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <strong>Jonathan Veloz</strong>
+    <span>Desarrollo web y modelado 3D</span>
+    <span id="year"></span>
+  </div>
+</footer>
+
+<!-- Visor 3D -->
+<div class="model-modal" id="modelModal" hidden role="dialog" aria-modal="true" aria-labelledby="modelTitle">
+  <div class="model-backdrop" data-close></div>
+
+  <div class="model-dialog">
+    <button class="model-close" data-close aria-label="Cerrar visor">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+
+    <div class="model-stage">
+      <div class="model-canvas" id="modelCanvasHost"></div>
+
+      <div class="model-loading" id="modelLoading">
+        <span class="bar"><i id="modelProgress"></i></span>
+        <small id="modelLoadingText">Cargando modelo…</small>
+      </div>
+
+      <div class="model-tools">
+        <button type="button" id="toolRotate" class="active" aria-pressed="true">Auto-rotar</button>
+        <button type="button" id="toolWire" aria-pressed="false">Malla</button>
+        <button type="button" id="toolReset">Reiniciar vista</button>
+      </div>
+
+      <p class="model-hint">Arrastra para rotar. Rueda para zoom. Clic derecho para mover.</p>
+    </div>
+
+    <aside class="model-info">
+      <span class="model-cat" id="modelCategory"></span>
+      <h3 id="modelTitle"></h3>
+      <p class="model-desc" id="modelDesc"></p>
+      <dl class="model-specs" id="modelSpecs"></dl>
+      <div class="tags" id="modelTags"></div>
+      <a class="btn btn-light model-download" id="modelDownload" hidden download>Descargar FBX</a>
+    </aside>
+  </div>
+</div>
+
+<script src="js/site-config.js"></script>
+<script src="js/projects.js"></script>
+<script src="js/models-data.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/main.js"></script>
+<script src="js/hero.js"></script>
+<script type="module" src="js/models.js"></script>
+</body>
+</html>
