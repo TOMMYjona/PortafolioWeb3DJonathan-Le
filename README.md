@@ -1,9 +1,9 @@
-# Portafolio Jonathan Veloz - V9
+# Portafolio Jonathan Veloz 
 
 Rediseño completo con dirección de "estudio 3D": gris de estudio, sección oscura
 tipo viewport para los modelos y un solo acento naranja (objeto seleccionado).
 
-## Qué cambió en V9
+## Qué cambió 
 - Hero integrado: el modelo 3D va a pantalla completa sobre un fondo degradado en movimiento,
   con malla quad, bordes rosa/azul, órbitas, anotaciones con datos reales de la malla y regla.
 - Hover dinámico (reemplaza el marcado naranja): la imagen se inclina en 3D siguiendo el mouse,
