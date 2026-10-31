@@ -111,7 +111,7 @@
     let dragging = false, lx = 0, ly = 0, visible = true, last = 0, lite = false;
     let cyw = 1, syw = 0, cp = 1, sp = 0;
 
-    // UNA sola ruta para Sólido, Malla y Texturas.
+    // UNA sola ruta para Sólido, Malla y Texturas y solido
     // Puedes cambiarla sin editar el archivo mediante window.HERO_GLB_URL.
     const GLB_URL = window.HERO_GLB_URL || "models/arma.glb";
     const textureView = {
